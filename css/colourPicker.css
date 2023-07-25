@@ -1,0 +1,198 @@
+:root
+{
+	--clr-light-primary-300: hsl(0 0% 19%);
+	--clr-light-primary-400: hsl(224, 37%, 43%);
+	--clr-light-primary-500: hsl(224, 60%, 69%);
+
+	--clr-light-secondary-300: hsl(194 14% 22%);
+	--clr-light-secondary-400: hsl(199 100% 48%);
+	--clr-light-secondary-500: hsl(210 22% 34% / 0.5);
+
+	--clr-light-accent-300: hsl(41 82% 30%);
+	--clr-light-accent-400: hsl(0 0% 47% / 0.5);
+	--clr-light-accent-500: hsl(0 0% 67% / 0.5);
+	
+
+	--clr-dark-primary-300: hsl(0 0% 0%);
+	--clr-dark-primary-400: hsl(0 0% 0%);
+	--clr-dark-primary-500: hsl(0 0% 0%);
+
+	--clr-dark-secondary-300: hsl(0 0% 0%);
+	--clr-dark-secondary-400: hsl(0 0% 0%);
+	--clr-dark-secondary-500: hsl(0 0% 0%);
+
+	--clr-dark-accent-300: hsl(0 0% 0%);
+	--clr-dark-accent-400: hsl(0 0% 0%);
+	--clr-dark-accent-500: hsl(0 0% 0%);
+
+
+
+	--clr-primary-300: var(--clr-light-primary-300);
+	--clr-primary-400: var(--clr-light-primary-400);
+	--clr-primary-500: var(--clr-light-primary-500);
+
+	--clr-secondary-300: var(--clr-light-secondary-300);
+	--clr-secondary-400: var(--clr-light-secondary-400);
+	--clr-secondary-500: var(--clr-light-secondary-500);
+
+	--clr-accent-300: var(--clr-light-accent-300);
+	--clr-accent-400: var(--clr-light-accent-400);
+	--clr-accent-500: var(--clr-light-accent-500);
+
+	--primary-text-colour: #0094ff;
+
+	--clr-500: white;
+	--clr-600:white;
+
+	--fc-light-400: var(--clr-600);
+	--fc-light-300: var(--clr-500);
+
+	--fc-dark-400: var(--clr-600);
+	--fc-dark-300: var(--clr-500);
+
+	--main-bg-colour: var(--clr-primary-300);
+}
+
+.colour-picker
+{
+    position: fixed;
+	z-index:100;
+	top:50%;
+	transform: translateY(-50%);
+	overflow: hidden;
+	
+	font: 1em 'Roboto', sans-serif;
+}
+
+.colour-picker > fieldset
+{
+	display: flex;
+	flex-direction: column;
+	gap: 1.4rem;
+	width:8rem;
+	background: hsl(0 0% 100% / 0.8);
+	padding: 2rem 1rem;
+	margin-inline: auto;
+	border-radius: 1rem;
+
+	margin-left:-100%;
+	transition: margin-left 250ms ease;
+}
+
+.colour-picker .picker-wrapper
+{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	width:100%;
+}
+
+.colour-picker:hover > fieldset,
+.colour-picker:focus-within > fieldset
+{
+	margin-left:0;
+}
+
+.colour-picker input[type="radio"]
+{
+	appearance: none;
+	width:1.5rem;
+	height:1.5rem;
+	outline: 3px solid var(--radio-colour, currentColor);
+	outline-offset:3px;
+	border-radius: 50%;
+	margin:0 auto;
+    
+	cursor: pointer;
+}
+
+.colour-picker input[type='color']
+{
+	width:100%;
+}
+
+.dark-toggle{
+	display:flex;
+	align-items:center;
+	cursor: pointer;
+	padding: 0.5rem;
+	border-radius: 25%;
+	border: 2px solid black;
+	align-self: center;
+}
+
+.dark-toggle::before
+{
+    content:"";
+    width:1.5rem;
+    height:1.5rem;
+    position:absolute;
+    
+	border-radius:25%;
+}
+.dark-toggle span{
+	display:block;
+	background:palegoldenrod;
+	color:grey;
+	width:1.5rem;
+	height:1.5rem;
+	border-radius:50%;
+	position:relative;
+	content: '';
+    
+    clip-path: circle();
+    border: 3px solid orange;
+}
+
+.flex-row
+{
+	display:flex;
+	gap: 1rem;
+}
+
+#darkmode:checked ~ .dark-toggle span
+{
+	background: black;
+    border: 0;
+    clip-path: polygon(18% 8%, 40% 0, 75% 0, 100% 30%, 97% 75%, 67% 100%, 20% 93%, 6% 67%, 42% 61%, 52% 33%);
+}
+
+input[type="radio"]#theme1
+{
+	--radio-colour: grey;
+}
+
+input[type="radio"]#theme2
+{
+	--radio-colour: hsl(208 64% 60%);
+}
+
+input[type="radio"]#theme3
+{
+	--radio-colour: hsl(202 53% 31%);
+}
+
+input[type="radio"]:checked
+{
+	background-color: var(--radio-colour);
+}
+
+:root.dark,
+.theme1.dark
+{
+
+	--clr-primary-300: var(--clr-dark-primary-300);
+	--clr-primary-400: var(--clr-dark-primary-400);
+	--clr-primary-500: var(--clr-dark-primary-500);
+
+	--clr-secondary-300: var(--clr-dark-secondary-300);
+	--clr-secondary-400: var(--clr-dark-secondary-400);
+	--clr-secondary-500: var(--clr-dark-secondary-500);
+
+	--clr-accent-300: var(--clr-dark-accent-300);
+	--clr-accent-400: var(--clr-dark-accent-400);
+	--clr-accent-500: var(--clr-dark-accent-500);
+
+    --fc-dark-400: var(--clr-500);
+	
+	--fc-dark-400: var(--clr-600);
+}

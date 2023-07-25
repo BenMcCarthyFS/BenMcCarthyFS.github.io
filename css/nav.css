@@ -1,0 +1,231 @@
+header
+{
+	position:absolute;
+	text-align:center;
+	z-index:10;
+	top:0;
+	left:0;
+	bottom:0;
+
+	
+	font: 400 1em 'Roboto', sans-serif;
+}
+
+.navWrapper
+{
+	display:flex;
+	width:100%;
+	flex: 100;
+	height:100%;		
+}
+
+.nav-toggle
+{
+	display:none;
+}
+
+.hero-nav {
+
+	all: unset;
+	grid-column: 3 / 4;
+	display:flex;
+	flex-direction: column;
+	align-items:center;
+	flex:1000;
+
+	gap:4rem;
+	padding: 3rem 1rem;
+	justify-self: auto;
+	
+	background-color: var(--main-bg-colour);
+}
+
+.panelFlow
+{
+	position:relative;
+}
+
+.panel
+{
+	text-align: left;
+	position: absolute;
+	width: 24rem;
+	background-color: hsl(0 0% 0% / 0.8);
+	height:100%;
+	transform-origin: left;
+	transform: scale(0,1);
+	z-index: -1;
+	transition: transform 200ms ease, opacity 100ms ease;
+	color:white;
+	opacity: 0;
+
+	padding:2rem;
+}
+
+.panelContent
+{
+	display:grid;
+	grid-template-rows: auto auto 1fr auto;
+	align-content: start;
+}
+
+.confirmButtons
+{
+	display:flex;
+	gap:1rem;
+	justify-content: end;
+}
+
+
+
+.panel .title
+{
+}
+
+.variableSliders
+{
+	display:flex;
+	gap:3rem;
+	flex-direction: column;
+	justify-content: center;;
+}
+
+
+.panel button
+{
+	width:100%;
+	border-radius: 1rem;
+	text-align: left;
+	padding: 1rem 3.5rem;
+	font-size: 12px;
+}
+
+.confirmButtons button
+{
+	border-radius: 2rem;
+	padding: 1rem 2rem;
+	text-align: center;
+	min-width: 1rem;
+	flex-basis: content;
+}
+
+button[data-id='cancel']
+{
+	background-color: black;
+	border: 1px solid white;
+}
+
+button[data-id='cancel']:hover
+{
+	background-color: var(--clr-light-secondary-400);
+}
+
+button[data-id='save']:hover
+{
+	background-color: var(--clr-light-secondary-400);
+}
+
+.panel>div
+{
+	opacity: 0;
+	gap:2rem;
+	height:100%;
+}
+
+.panel.active
+{	
+	transform: scale(1,1);
+	
+	opacity: 1;
+}
+
+.panel.active>div
+{	
+	opacity:1;
+	transition: opacity 400ms ease-in;
+}
+
+.environmentList
+{
+	display:flex;
+	flex-direction: column;
+	gap:1.5rem;
+}
+
+.hero-nav span i
+{
+	color:hsl(0 0% 100% / .5);
+	transition: color 200ms ease, transform 200ms ease-out;
+}
+
+.hero-nav span:hover{
+	cursor:pointer;
+}
+
+.hero-nav span:hover i {
+	color:lightgray;
+}
+
+.hero-nav span.active i {
+	
+	color: var(--clr-light-secondary-400);
+	transform: scale(1.35) translate(0rem, .2rem);
+}
+
+
+.button 
+{
+	display: inline-block;
+	margin: 4px 2px;
+	font-size: 14px;
+	height: 1.6rem;
+	width: 2rem;
+	line-height: 2rem;
+	text-align: center;
+	color: white;
+	cursor: pointer;
+	user-select: none;
+}
+
+.searchGlass
+{
+	display:inline-block;
+	rotate: -45deg;
+	font-size: 2rem;
+}
+
+
+.search 
+{
+	position: absolute;
+	border:0;
+	border-bottom: 2px solid white;
+	color: white;
+	outline: 0;
+	background-color: transparent;
+	padding: 0;
+	width: calc(100% - 4rem);
+	height: 2rem;
+	left: 3rem;
+	z-index: 10;
+	transition: width 400ms ease, opacity 200ms ease;
+	bottom:0;
+	font-size:1rem;
+}
+
+.search::placeholder
+{
+	color: inherit;
+	opacity: 0.6;
+}
+
+.hero-nav i.fa-xl
+{
+	line-height: inherit;
+	vertical-align: 0;
+}
+
+.search-container
+{
+	position:relative;
+}
