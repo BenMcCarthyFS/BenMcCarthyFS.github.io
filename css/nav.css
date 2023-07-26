@@ -65,8 +65,25 @@ header
 .panelContent
 {
 	display:grid;
-	grid-template-rows: auto auto 1fr auto;
+	grid-template-rows: auto  1fr auto;
 	align-content: start;
+}
+
+.searchContent
+{
+	grid-template-rows: auto  1fr ;
+}
+
+.scrollContent
+{
+	display:flex;
+	flex-direction: column;
+	gap:3rem;
+}
+
+.searchContent .scrollContent
+{
+	gap:0.8rem;
 }
 
 .confirmButtons
@@ -77,17 +94,12 @@ header
 }
 
 
-
-.panel .title
-{
-}
-
 .variableSliders
 {
 	display:flex;
 	gap:3rem;
 	flex-direction: column;
-	justify-content: center;;
+	justify-content: center;
 }
 
 
@@ -130,6 +142,8 @@ button[data-id='save']:hover
 	opacity: 0;
 	gap:2rem;
 	height:100%;
+	
+	transition: opacity 100ms ease-in;
 }
 
 .panel.active
@@ -189,9 +203,6 @@ button[data-id='save']:hover
 
 .searchGlass
 {
-	display:inline-block;
-	rotate: -45deg;
-	font-size: 2rem;
 }
 
 
@@ -199,8 +210,6 @@ button[data-id='save']:hover
 {
 	position: absolute;
 	border:0;
-	border-bottom: 2px solid white;
-	color: white;
 	outline: 0;
 	background-color: transparent;
 	padding: 0;
@@ -211,6 +220,15 @@ button[data-id='save']:hover
 	transition: width 400ms ease, opacity 200ms ease;
 	bottom:0;
 	font-size:1rem;
+	margin:0.2rem;
+}
+
+.searchLeft
+{
+	position: unset;
+	left:1rem;
+	bottom:unset;
+	top:unset;
 }
 
 .search::placeholder
@@ -228,4 +246,62 @@ button[data-id='save']:hover
 .search-container
 {
 	position:relative;
+	background-color: hsl(0 0% 85%);
+	border-radius: 1rem;
+	padding: 0 1rem;
+}
+
+.searchButton
+{
+	position:absolute;
+	right:0;
+	color:black;
+}
+
+.systemsRoot
+{
+	padding-top:2rem;
+	border-left: 2px solid white;
+	margin:0.5rem;
+	padding-left:3rem;
+}
+
+.systemsRoot li
+{
+	margin: 1rem 0;
+	position:relative;
+}
+
+.systemsRoot .hoverTarget
+{
+	margin: 1rem 0;
+	position:relative;
+	transition: color 200ms ease;
+	cursor:pointer;
+}
+
+.systemsRoot .hoverTarget:hover
+{
+	color: hsl(199 100% 48%);
+}
+
+.systemsRoot>ul>li
+{
+	margin: 0 0 2rem 0;
+}
+
+.left-rem
+{
+	position: absolute;
+	left:-1.5rem;
+}
+
+.fa
+{
+	line-height: unset;
+}
+
+.systemsRoot ul ul
+{
+	padding-left:1rem;
 }
