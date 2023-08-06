@@ -1,13 +1,10 @@
 header
 {
-	position:absolute;
+	position:fixed;
 	text-align:center;
 	z-index:10;
-	top:0;
-	left:0;
-	bottom:0;
+	height:100%;
 
-	
 	font: 400 1em 'Roboto', sans-serif;
 }
 
@@ -30,8 +27,7 @@ header
 	grid-column: 3 / 4;
 	display:flex;
 	flex-direction: column;
-	align-items:center;
-	flex:1000;
+	align-items:flex-start;
 
 	gap:4rem;
 	padding: 3rem 1rem;
@@ -43,18 +39,18 @@ header
 .panelFlow
 {
 	position:relative;
+	width:24rem;
 }
 
 .panel
 {
 	text-align: left;
 	position: absolute;
-	width: 24rem;
+	width: 100%;
 	background-color: hsl(0 0% 0% / 0.8);
 	height:100%;
 	transform-origin: left;
 	transform: scale(0,1);
-	z-index: -1;
 	transition: transform 200ms ease, opacity 100ms ease;
 	color:white;
 	opacity: 0;
@@ -64,9 +60,12 @@ header
 
 .panelContent
 {
+	position:relative;
 	display:grid;
 	grid-template-rows: auto  1fr auto;
 	align-content: start;
+	width:100%;
+	user-select: none;
 }
 
 .searchContent
@@ -79,6 +78,7 @@ header
 	display:flex;
 	flex-direction: column;
 	gap:3rem;
+	min-height:0;
 }
 
 .searchContent .scrollContent
@@ -268,13 +268,11 @@ button[data-id='save']:hover
 
 .systemsRoot li
 {
-	margin: 1rem 0;
 	position:relative;
 }
 
 .systemsRoot .hoverTarget
 {
-	margin: 1rem 0;
 	position:relative;
 	transition: color 200ms ease;
 	cursor:pointer;
@@ -304,4 +302,56 @@ button[data-id='save']:hover
 .systemsRoot ul ul
 {
 	padding-left:1rem;
+}
+
+.scrollbox
+{
+	overflow-y: scroll;
+	
+}
+
+.scrollbox::-webkit-scrollbar {
+	width: 10px;
+  }
+  
+  /* Track */
+  .scrollbox::-webkit-scrollbar-track {
+	background: #00000000; 
+  }
+   
+  /* Handle */
+  .scrollbox::-webkit-scrollbar-thumb {
+	background: #888; 
+  }
+  
+  /* Handle on hover */
+  .scrollbox::-webkit-scrollbar-thumb:hover {
+	background: #555; 
+  }
+
+
+.systemsRoot li
+{
+	display:grid;
+	grid-template-rows: auto 0fr;
+	gap:0;
+	transition: grid-template-rows 200ms ease;
+	margin: 1rem 0 0 0;
+}
+
+.systemsRoot li.active
+{
+	display:grid;
+	grid-template-rows: auto 1fr;
+	
+}
+
+.systemsRoot li > ul
+{
+	overflow: hidden;
+}
+
+li.hidden
+{
+	display:none;
 }

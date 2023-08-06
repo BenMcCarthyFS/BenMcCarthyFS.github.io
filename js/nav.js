@@ -14,7 +14,19 @@
                         {
                             'name':'Antenna 1',
                             'mesh':'mesh1',
-                            'components': []
+                            'components': [
+                                {
+                                    'name':'Antenna 1',
+                                    'mesh':'mesh1',
+                                    'components': [
+                                        {
+                                            'name':'Antenna 1',
+                                            'mesh':'mesh1',
+                                            'components': []
+                                        }
+                                    ]
+                                }
+                            ]
                         },
                         {
                             'name':'Antenna 2',
@@ -239,6 +251,7 @@ function buildSystemMenus()
     for(let i = 0; i< searchJSON.systems.length; i++)
     {
         let systemItem = document.createElement('li');
+        systemItem.classList.add("active");
         let systemTitle = document.createElement('div');
         systemTitle.classList.add('title');
         systemTitle.innerHTML = `<span class='hoverTarget'><i class="fa-solid fa-magnifying-glass left-rem"></i>${searchJSON.systems[i].name}</span>`;
@@ -258,13 +271,27 @@ function buildSystemMenus()
         for(let i = 0;i<jsonOb.length;i++)
         {
             let listItem = document.createElement('li');
-            listItem.innerHTML = `<span class='hoverTarget'>${jsonOb[i].name}</span>`;
 
-            if(jsonOb[i].components.length > 0){addComponents(listItem, jsonOb[i].components)}
+            let itemContents = document.createElement('span');
+            itemContents.classList.add('hoverTarget');
+
+            if(i > maxComponents)
+            {
+                listItem.classList.add('hidden');
+            }
+
+            itemContents.innerHTML = jsonOb[i].name; 
+            listItem.appendChild(itemContents);
+            console.log(jsonOb[i].components.length)
+            if(jsonOb[i].components.length > 0){
+                addComponents(listItem, jsonOb[i].components);                           
+                itemContents.addEventListener('click',toggleMenuItem);
+
+            }
             componentList.appendChild(listItem);
         }
 
-        if(jsonOb.length > 4)
+        if(jsonOb.length > maxComponents)
         {
             let listItem = document.createElement('li');
             listItem.innerHTML = `<span class='hoverTarget'><i class="fa-solid fa-plus left-rem"></i>Show More</span>`;
@@ -272,8 +299,26 @@ function buildSystemMenus()
         }
     }
     
-    _navWrapper.querySelector(".systemsRoot").appendChild(rootList);
+    let _root = _navWrapper.querySelector(".systemsRoot");
+    _root.innerHTML = "";
+    _root.appendChild(rootList);
 }
+
+function toggleMenuItem(evt)
+{
+    let itemParent = evt.currentTarget.parentElement;
+    itemParent.classList.toggle("active");
+    if(!itemParent.classList.contains("active"))
+    {
+        //remove active from children
+        let activeChildren = itemParent.getElementsByClassName("active");
+        for(let child of activeChildren)
+        {
+            child.classList.remove('active');
+        }
+    }
+}
+
 buildSystemMenus();
 
 let activeID;
